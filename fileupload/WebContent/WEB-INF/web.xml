@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>fileupload</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description></description>
+		<display-name>UploadServlet</display-name>
+		<servlet-name>UploadServlet</servlet-name>
+		<servlet-class>com.video.web.UploadServlet</servlet-class>
+		<init-param>
+			<description>Define storagepath for fileuploads</description>
+			<param-name>upload_path</param-name>
+			<param-value>/uploadFile</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>CutServlet</display-name>
+		<servlet-name>CutServlet</servlet-name>
+		<servlet-class>com.video.web.CutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description></description>
+		<display-name>SearchServlet</display-name>
+		<servlet-name>SearchServlet</servlet-name>
+		<servlet-class>com.video.web.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadServlet</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CutServlet</servlet-name>
+		<url-pattern>/cut</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SearchServlet</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>FrameServlet</display-name>
+		<servlet-name>FrameServlet</servlet-name>
+		<servlet-class>com.video.web.FrameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FrameServlet</servlet-name>
+		<url-pattern>/frame</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>ConvertServlet</display-name>
+		<servlet-name>ConvertServlet</servlet-name>
+		<servlet-class>com.video.web.ConvertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConvertServlet</servlet-name>
+		<url-pattern>/convert</url-pattern>
+	</servlet-mapping>
+
+</web-app>

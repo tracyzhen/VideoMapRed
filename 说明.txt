@@ -1,0 +1,19 @@
+部署说明：
+1. Map Reduce做视频切割的时候，用到ffmpeg库，因此系统首先得安装好ffmpeg。
+   Ubuntu环境下：sudo apt-get install ffmpeg
+2. 调用ffmpeg时，是用java调用shell脚本，所需要的脚本都在script目录下，因此在/usr/VideoMapRed/目录下，拷贝这些文件
+3. Web App里面启动Hadoop Job，也是通过调用shell脚本的方式，因此要将runHadoop.sh，runMPKeyFrame.sh放在/usr/VideoMapRed/目录下，其中需要修改shell脚本里面的hadoop安装路径
+4. Map Reduce工程（转码和切割）以一个jar包的形式存放在Hadoop安装目录下，此jar包为VideoMapRed.jar
+5. KeyFrame 工程 （提取关键帧和计算平均亮度）以一个jar包的形式存放在Hadoop安装目录下，此jar包为KeyFrame.jar
+5. 由于HDFS的url问题，程序中也要做相应修改。
+6. 由于做视频处理时，缓存视频是存放在/usr/VideoMapRed/目录下，因此此目录有读写权限。
+
+程序说明：
+1. 切割的视频存放位置
+   假设视频A的存放目录为：hdfs://localhost:9000/user/xxx/Movie/A
+   那么视频切割的路径：hdfs://localhost:9000/user/xxx/_Split_/A
+   Map Reduce的输出结果路径：hdfs://localhost:9000/user/xxx/Result/A
+2. 转码视频位置：hdfs://localhost:9000/user/xxx/Convert/A
+3. 提取关键帧位置：hdfs://localhost:9000/user/xxx/Frames/A
+4. 计算平均亮度：统一放在一个文件中，hdfs://localhost:9000/user/xxx/Lights
+
