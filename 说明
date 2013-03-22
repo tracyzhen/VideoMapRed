@@ -7,6 +7,7 @@
 5. KeyFrame 工程 （提取关键帧和计算平均亮度）以一个jar包的形式存放在Hadoop安装目录下，此jar包为KeyFrame.jar
 5. 由于HDFS的url问题，程序中也要做相应修改。
 6. 由于做视频处理时，缓存视频是存放在/usr/VideoMapRed/目录下，因此此目录有读写权限。
+7. 此次实验用到HBase，版本是稳定版0.94.5,配置按照官方伪分布式模式配置，rootdir设置为hdfs根目录下的hbase.
 
 程序说明：
 1. 切割的视频存放位置
@@ -16,4 +17,7 @@
 2. 转码视频位置：hdfs://localhost:9000/user/xxx/Convert/A
 3. 提取关键帧位置：hdfs://localhost:9000/user/xxx/Frames/A
 4. 计算平均亮度：统一放在一个文件中，hdfs://localhost:9000/user/xxx/Lights
+5. HBase中得先创建两张表
+    i: create 'videoLights','light'
+    ii: create 'videoRindex','video','frame','light'
 
